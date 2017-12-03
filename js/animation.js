@@ -223,8 +223,10 @@ function loadPlans() {
             $(block).removeClass("undisplay");
             if (i == response.purchase) {
                 console.log("found match")
-                $(block).css({"border-width": "5px",
-                        "border-color":"#fff",})
+                $(block).css({
+                         "border-width": "5px",
+                        "border-color":"#fff",
+                        "border-style": "solid"})
             };
     }
     $("#results").removeClass("undisplay");

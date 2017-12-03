@@ -1,3 +1,4 @@
+
 #world {
     position: absolute;
     width: 100%;
@@ -26,12 +27,13 @@ body {
 
 .floatleft {
     float: left;
-    width: 5%;
+    width: 15%;
     height: 50%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin:1%;
     opacity: 0.5;
     text-align: center;
     margin: 10;
