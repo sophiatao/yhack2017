@@ -70,10 +70,10 @@ function getNextForm(param) {
                     return;
                 })
                 info.state = document.getElementById("state").value; //selecting
-                if (!info.state) {
-                    alert("Invalid state");
-                    return;
-                }
+                // if (!info.state) {
+                //     alert("Invalid state");
+                //     return;
+                // }
                 animatenone(elem);
                 changeTransparency("two");
                 break;
@@ -82,10 +82,10 @@ function getNextForm(param) {
                 info.maritalstatus = document.getElementById("mar").checked? 1 : 0;
                 info.employmentstatus = document.getElementById("emp").checked? 1 : 0;
                 info.annualincome = document.getElementById("ann").value; //number between range
-                if (info.annualincome < 0 || info.annualincome > 1000000) {
-                    alert("Please enter income in range 0-1000000");
-                    return;
-                }
+                // if (info.annualincome < 0 || info.annualincome > 1000000) {
+                //     alert("Please enter income in range 0-1000000");
+                //     return;
+                // }
                 info.dependents = document.getElementById("dep").value; //1, 2, 3, 4
                 // if (maritalstatus == null)
                 animatenone(elem);
@@ -94,25 +94,25 @@ function getNextForm(param) {
             case (3):
                 var elem = document.getElementById("three");
                 info.age = document.getElementById("age").value; //min 18, max 99
-                if (info.age < 18 || info.age > 99) {
-                    alert("Please enter age in range 18 and 99");
-                    return;
-                }
+                // if (info.age < 18 || info.age > 99) {
+                //     alert("Please enter age in range 18 and 99");
+                //     return;
+                // }
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
-                if (!(info.sex == "F" || info.sex == "M")) {
-                    alert("Please enter M or F for sex");
-                    return;
-                }
+                // if (!(info.sex == "F" || info.sex == "M")) {
+                //     alert("Please enter M or F for sex");
+                //     return;
+                // }
                 info.height = document.getElementById("height").value; //50max is 80
-                if (info.height < 50 || info.height > 80) {
-                    alert("Please enter height in range 50 and 80");
-                    return;
-                }
+                // if (info.height < 50 || info.height > 80) {
+                //     alert("Please enter height in range 50 and 80");
+                //     return;
+                // }
                 info.weight = document.getElementById("weight").value; //100max is 300
-                if (info.weight < 100 || info.weight > 300) {
-                    alert("Please enter weight in range 100 and 300");
-                    return;
-                }
+                // if (info.weight < 100 || info.weight > 300) {
+                //     alert("Please enter weight in range 100 and 300");
+                //     return;
+                // }
                 info.tobacco = document.getElementById("tob").checked? 1 : 0;
                 animatenone(elem);
                 changeTransparency("four");
@@ -122,7 +122,7 @@ function getNextForm(param) {
                 for (var i = 0; i <= mednum; i++) {
                     var med = document.getElementById("med"+i).value.split(" ")[0];
                     var risk = document.getElementById("risk"+i).value;
-                    if (risk != "Low" && risk != "Medium" && risk != "High" && !med) {
+                    if (risk != "Low" && risk != "Medium" && risk != "High" && med) {
                         alert("Risk must be 'Low', 'Medium', or 'High'.");
                         return;
                     }
@@ -133,7 +133,7 @@ function getNextForm(param) {
                 break;
             case (5):
                 var elem = document.getElementById("five");
-                info.total += document.getElementById("additional").value;
+                info.total = info.total + document.getElementById("additional").value * 1000;
                 animatenone(elem);
                 console.log(info);
                 submit();
@@ -154,6 +154,7 @@ function submit() {
     }
     console.log(xhr.status);
     console.log(xhr.responseText);
+    loadPlans();
 
 }
 
@@ -175,39 +176,39 @@ function loadPlans() {
             plan = "Platinum";
             price = response.platinum;
     }
-    $("preferred").html(function() {
+    $("#preferred").html(function() {
         return plan + "<br>" + price;
     });
-    $("preferred").removeClass("undisplay");
+    $("#preferred").removeClass("undisplay");
     for (var i = 0; i < 3; i++) {
         if (i != response.purchase) {
             switch (i) {
                 case 0:
-                    $("resultblock"+i).html(function() {
+                    $("#resultblock"+i).html(function() {
                         return "Bronze <br>" + price;
                     });
                     break;
                 case 1:
-                    $("resultblock"+i).html(function() {
+                    $("#resultblock"+i).html(function() {
                         return "Silver <br>" + price;
                     });
                     break;
                 case 2:
-                    $("resultblock"+i).html(function() {
+                    $("#resultblock"+i).html(function() {
                         return "Gold <br>" + price;
                     });
                     break;
                 case 3:
-                    $("resultblock"+i).html(function() {
+                    $("#resultblock"+i).html(function() {
                         return "Platinum <br>" + price;
 
                     });
                     break;
             }
-            $("resultblock"+i).removeClass("undisplay");
+            $("#resultblock"+i).removeClass("undisplay");
         }
     }
-    results.removeClass("undisplay");
+    $("#results").removeClass("undisplay");
 }
 
 function changeTransparency(elem, transparency) {
