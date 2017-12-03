@@ -23,19 +23,9 @@
   <h1>Welcome to the ViTech cost estimator!</h1>
   <br>
   </div>
-<!--   <div class="questions">
-    <div class="text" id="zero">
-      <form action="/action_page.php">
-      First name: <input type="text" id="fname"><br><br>
-      Last name: <input type="text" id="lname"><br><br>
-      Email: <input type="text" id="email"><br><br>
-      </form>
-      <button onClick="getNextForm(0)">Next>></button>
-    </div>
-  </div> -->
   <div class="questions">
     <div class="text-format" id="one">
-      <form action="/action_page.php">
+      <form onsubmit="return false;">
       First name: <input type="text" id="fname"><br><br>
       Last name: <input type="text" id="lname"><br><br>
       Email: <input type="text" id="email"><br><br>
@@ -48,7 +38,7 @@
   </div>
   <div class="questions">
     <div class="text-format semitransparent" id="two">
-      <form action="/action_page.php">
+      <form onsubmit="return false;">
       Are you married? <input type="checkbox" id="mar"><br><br>
       Are you employed? <input type="text" id="emp"><br><br>
       Annual income (in dollars): <input type="number" id="ann"><br><br>
@@ -59,7 +49,7 @@
   </div>
   <div class="questions">
     <div class="text-format semitransparent" id="three">
-      <form action="/action_page.php">
+      <form onsubmit="return false;">
       Age:  <input type="number" id="age"><br><br>
       Sex: <input list="sexes" id="sex" />
               <datalist id="sexes">
@@ -75,7 +65,7 @@
   </div>
   <div class="questions">
     <div class="text-format semitransparent" id="four">
-      <form action="/action_page.php" id="medical-form">
+      <form onsubmit="return false;" id="medical-form">
         Existing medical conditions:
 <!--       <div class="med" id="medical-form"> -->
         <form onsubmit="return false;" class="pure-form" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:30px 0;padding:20px 10px;text-align:center">
@@ -84,7 +74,15 @@
 <!--       </div> -->
       <button onClick="addForm()" style="width: 50%">+</button><button onClick="removeForm()" style="width: 50%; float: right;">-</button>
       </form>
-      <button onClick="getNextForm(4)">Submit>></button>
+      <button onClick="getNextForm(4)">Next>></button>
+    </div>
+  </div>
+  <div class="questions">
+    <div class="text-format semitransparent" id="five">
+      Coverage is $500,000 by default. Do you want additional insurance?
+      <input type="range" style="width:100%" id="additional" min="0" max="40" value="40" class="slider" onchange="updateSliderValue(this.value);"><br>
+      <div id="slideroutput">400,000</div><br>
+      <button onClick="getNextForm(5)">Submit>></button>
     </div>
   </div>
 </div>

@@ -15,6 +15,7 @@ var info = {
     weight: null,
     tobacco: null,
     medical: null,
+    total: 500000,
 }
 var url = "http://159.203.2.233/quote"
 
@@ -79,7 +80,7 @@ function getNextForm(param) {
                 break;
             case (2):
                 var elem = document.getElementById("two");
-                info.maritalstatus = document.getElementById("mar").value;
+                info.maritalstatus = document.getElementById("mar").value? 1 : 0;
                 info.employmentstatus = document.getElementById("emp").value;
                 info.annualincome = document.getElementById("ann").value; //number between range
                 info.dependents = document.getElementById("dep").value; //1, 2, 3, 4
@@ -93,12 +94,18 @@ function getNextForm(param) {
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
                 info.height = document.getElementById("height").value; //number between range();
                 info.weight = document.getElementById("weight").value; //number between range();
-                info.tobacco = document.getElementById("tob").value;
+                info.tobacco = document.getElementById("tob").value? 1 : 0;
                 elem.style.display = 'none';
                 changeTransparency("four");
                 break;
             case (4):
                 var elem = document.getElementById("four");
+                elem.style.display = 'none';
+                changeTransparency("five");
+                break;
+            case (5):
+                var elem = document.getElementById("five");
+                info.total += document.getElementById("additional").value;
                 elem.style.display = 'none';
                 console.log(info);
                 submit();
@@ -132,4 +139,10 @@ function changeTransparencyWithBorder(elem, transparency) {
 
 function addForm() {
     var e = document.getElementById("medical-form");
+}
+
+// Update the current slider value (each time you drag the slider handle)
+function updateSliderValue(value) {
+    var output = document.getElementById("slideroutput");
+    output.innerHTML = value * 10000;
 }
