@@ -24,6 +24,24 @@ body {
     color: red;
 }
 
+.floatleft {
+    float: left;
+    width: 5%;
+    height: 50%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    opacity: 0.5;
+    text-align: center;
+    margin: 10;
+}
+
+.floatleft:hover {
+    opacity: 1;
+}
+
+
 .container {
 
     padding: 15px;
@@ -35,7 +53,7 @@ body {
     margin-top: -50px;
     left: 10%;
     /*margin-right: 25%;*/
-    width: 250%;
+    width: 90%;
     height: 70%;
 }
 
@@ -60,14 +78,12 @@ body {
     background-color: #FDB931;
     border-radius: 5px;
     color: #fff;
-    opacity: 0.5;
     font-family: 'Raleway', sans-serif;
 }
 
 .silver {
     background-color: #ADA996;  /* fallback for old browsers */
     border-radius: 5px;
-    opacity: 0.5;
     color: #fff;
     font-family: 'Raleway', sans-serif;
 }
@@ -75,7 +91,6 @@ body {
 .bronze {
     background-color: #ff8d00;
     border-radius: 5px;
-    opacity: 0.5;
     color: #fff;
     font-family: 'Raleway', sans-serif;
 }
@@ -83,7 +98,6 @@ body {
 .platinum {
     background-color: #24BEEE;
     border-radius: 5px;
-    opacity: 0.5;
     color: #fff;
     font-family: 'Raleway', sans-serif;
 }

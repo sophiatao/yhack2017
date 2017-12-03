@@ -192,6 +192,7 @@ function loadPlans() {
     });
     $("#preferred").removeClass("undisplay");
     $("#preferred").addClass(key);
+    $("#title").children().text("Your preferred plan: "+plan);
     for (var i = 0; i < 4; i++) {
         if (i != response.purchase) {
             switch (i) {
