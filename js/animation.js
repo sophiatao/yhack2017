@@ -1,3 +1,4 @@
+
 var info = {
     firstName: null,
     lastname: null,
@@ -152,11 +153,16 @@ function submit() {
         console.log(xhr.responseText);
         response = JSON.parse(xhr.responseText);
         loadPlans();
+        $("#loading").addClass("undisplay");
     }
     console.log(xhr.status);
     console.log(xhr.responseText);
-    loadPlans();
+    produceLoading();
 
+}
+
+function produceLoading() {
+    $("#loading").removeClass("undisplay");
 }
 
 function loadPlans() {

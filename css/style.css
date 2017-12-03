@@ -1,3 +1,7 @@
+:root {
+    --font: 'Raleway', sans-serif;
+}
+
 
 #world {
     position: absolute;
@@ -43,6 +47,15 @@ body {
     opacity: 1;
 }
 
+.blocker {
+    background: "#fff";
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
+    margin-left:30%;
+    z-index: 20;
+}
+
 
 .container {
 
@@ -73,35 +86,35 @@ body {
 .questions {
 
     color: #fff;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font);
 }
 
 .gold {
     background-color: #FDB931;
     border-radius: 5px;
     color: #fff;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font);
 }
 
 .silver {
     background-color: #ADA996;  /* fallback for old browsers */
     border-radius: 5px;
     color: #fff;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font);
 }
 
 .bronze {
     background-color: #ff8d00;
     border-radius: 5px;
     color: #fff;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font);
 }
 
 .platinum {
     background-color: #24BEEE;
     border-radius: 5px;
     color: #fff;
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font);
 }
 
 .madborder {
