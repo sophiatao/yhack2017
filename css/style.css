@@ -56,6 +56,50 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+.gold {
+    background-color: #FDB931;
+    border-radius: 5px;
+    color: #fff;
+    opacity: 0.5;
+    font-family: 'Raleway', sans-serif;
+}
+
+.silver {
+    background-color: #ADA996;  /* fallback for old browsers */
+    border-radius: 5px;
+    opacity: 0.5;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.bronze {
+    background-color: #ff8d00;
+    border-radius: 5px;
+    opacity: 0.5;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.platinum {
+    background-color: #24BEEE;
+    border-radius: 5px;
+    opacity: 0.5;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+.results {
+    /*display: none;*/
+    float: left;
+}
+
+.undisplay {
+    display: none;
+}
+
+
 .h1 {
     font-size: 5em;
 }

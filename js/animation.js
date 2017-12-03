@@ -21,6 +21,13 @@ var info = {
 }
 var url = "http://159.203.2.233/quote"
 var mednum = 0;
+var response = {
+    "bronze": 500,
+    "silver": 600,
+    "gold": 700,
+    "platinum": 800,
+    "purchase": 1,
+};
 
 
 function getNextForm(param) {
@@ -92,10 +99,10 @@ function getNextForm(param) {
                     return;
                 }
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
-                // if (!(sex.equals("F") || sex.equals("M")) {
-                //     alert("Please enter M or F for sex");
-                //     return;
-                // }
+                if (!(info.sex == "F" || info.sex == "M")) {
+                    alert("Please enter M or F for sex");
+                    return;
+                }
                 info.height = document.getElementById("height").value; //50max is 80
                 if (info.height < 50 || info.height > 80) {
                     alert("Please enter height in range 50 and 80");
@@ -115,7 +122,7 @@ function getNextForm(param) {
                 for (var i = 0; i <= mednum; i++) {
                     var med = document.getElementById("med"+i).value.split(" ")[0];
                     var risk = document.getElementById("risk"+i).value;
-                    if (risk != "Low" && risk != "Medium" && risk != "High") {
+                    if (risk != "Low" && risk != "Medium" && risk != "High" && !med) {
                         alert("Risk must be 'Low', 'Medium', or 'High'.");
                         return;
                     }
@@ -142,10 +149,65 @@ function submit() {
     xhr.onload = function() {
         console.log(xhr.status);
         console.log(xhr.responseText);
+        response = JSON.parse(xhr.responseText);
+        loadPlans();
     }
     console.log(xhr.status);
     console.log(xhr.responseText);
 
+}
+
+function loadPlans() {
+    var plan;
+    var price;
+    switch(response.purchase) {
+        case 0:
+            plan = "Bronze";
+            price = response.bronze;
+            break;
+        case 1:
+            plan = "Silver";
+            price = response.silver;
+        case 2:
+            plan = "Gold";
+            price = response.gold;
+        case 3:
+            plan = "Platinum";
+            price = response.platinum;
+    }
+    $("preferred").html(function() {
+        return plan + "<br>" + price;
+    });
+    $("preferred").removeClass("undisplay");
+    for (var i = 0; i < 3; i++) {
+        if (i != response.purchase) {
+            switch (i) {
+                case 0:
+                    $("resultblock"+i).html(function() {
+                        return "Bronze <br>" + price;
+                    });
+                    break;
+                case 1:
+                    $("resultblock"+i).html(function() {
+                        return "Silver <br>" + price;
+                    });
+                    break;
+                case 2:
+                    $("resultblock"+i).html(function() {
+                        return "Gold <br>" + price;
+                    });
+                    break;
+                case 3:
+                    $("resultblock"+i).html(function() {
+                        return "Platinum <br>" + price;
+
+                    });
+                    break;
+            }
+            $("resultblock"+i).removeClass("undisplay");
+        }
+    }
+    results.removeClass("undisplay");
 }
 
 function changeTransparency(elem, transparency) {
@@ -184,7 +246,7 @@ function addForm() {
 }
 
 function removeForm() {
-    if (mednum <= 0) {
+    if (mednum < 0) {
         return;
     }
 
