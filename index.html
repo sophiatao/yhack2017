@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ViTech - Life Insurance Estimator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <script src="./threejs/build/three.js"></script>
+
+  <script src="./threejs/examples/js/controls/OrbitControls.js"></script>
+  <script src="./threejs/examples/js/SkyShader.js"></script>
+
+  <script src="./threejs/examples/js/Detector.js"></script>
+  <script src="./threejs/examples/js/libs/dat.gui.min.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/animation.js"></script>
+  <link type="text/css" rel="stylesheet" href="./css/style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="./css/auto-complete.css">
+</head>
+<body>
+<div class="container">
+  <div class="questions" id="title">
+  <h1>Welcome to the ViTech cost estimator!</h1>
+  <br>
+  </div>
+  <!-- <div class="questions">
+    <div class="text" id="zero">
+      <form action="/action_page.php">
+      First name: <input type="text" id="fname"><br><br>
+      Last name: <input type="text" id="lname"><br><br>
+      Email: <input type="text" id="email"><br><br>
+      </form>
+      <button onClick="getNextForm(0)">Next>></button>
+    </div>
+  </div> -->
+  <div class="questions">
+    <div class="text semitransparent" id="one">
+      <form action="/action_page.php">
+      Address: <input type="text" id="address"><br><br>
+      City: <input type="text" id="city"><br><br>
+      State: <input type="text" id="state"><br><br>
+      </form>
+      <button onClick="getNextForm(1)">Next>></button>
+    </div>
+  </div>
+  <div class="questions">
+    <div class="text semitransparent" id="two">
+      <form action="/action_page.php">
+      Are you married? <input type="checkbox" id="mar"><br><br>
+      Are you employed? <input type="text" id="emp"><br><br>
+      Annual income (in dollars): <input type="number" id="ann"><br><br>
+      Number of people covered in plan (including yourself): <input type="number" id="dep"><br><br>
+      </form>
+      <button onClick="getNextForm(2)" style="border-bottom-color: 0px">Next>></button>
+    </div>
+  </div>
+  <div class="questions">
+    <div class="text semitransparent" id="three">
+      <form action="/action_page.php">
+      Age:  <input type="number" id="age"><br><br>
+      Sex: <input list="sexes" id="sex" />
+              <datalist id="sexes">
+                <option value="M">
+                <option value="F">
+              </datalist><br><br>
+      Height: <input type="number" id="height"><br><br>
+      Weight: <input type="number" id="weight"><br><br>
+      Do you consume tobacco? <input type="checkbox" id="tob"><br><br>
+      </form>
+      <button onClick="getNextForm(3)">Next>></button>
+    </div>
+  </div>
+  <div class="questions">
+    <div class="text semitransparent" id="four">
+      <form action="/action_page.php" id="medical-form">
+        Existing medical conditions:
+<!--       <div class="med" id="medical-form"> -->
+        <form onsubmit="return false;" class="pure-form" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:30px 0;padding:20px 10px;text-align:center">
+          <input id="hero-demo" autofocus type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:100%;max-width:600px;outline:0">
+        </form>
+<!--       </div> -->
+      <button onClick="addForm()" style="width: 50%">+</button><button onClick="removeForm()" style="width: 50%; float: right;">-</button>
+      </form>
+      <button onClick="getNextForm(4)">Submit>></button>
+    </div>
+  </div>
+</div>
+<div class="display">
+  <div class="gold">
+  </div>
+</div>
+
+
+<div id="world"></div>
+
+<script src="./js/auto-complete.min.js"></script>
+    <script>
+        var demo1 = new autoComplete({
+            selector: '#hero-demo',
+            minChars: 1,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+                var suggestions = [];
+                for (i=0;i<choices.length;i++)
+                    if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                suggest(suggestions);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
