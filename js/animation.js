@@ -71,10 +71,10 @@ function getNextForm(param) {
                     return;
                 })
                 info.state = document.getElementById("state").value; //selecting
-                // if (!info.state) {
-                //     alert("Invalid state");
-                //     return;
-                // }
+                if (!info.state) {
+                    alert("Invalid state");
+                    return;
+                }
                 animatenone(elem);
                 changeTransparency("two");
                 break;
@@ -83,37 +83,40 @@ function getNextForm(param) {
                 info.maritalstatus = document.getElementById("mar").checked? 1 : 0;
                 info.employmentstatus = document.getElementById("emp").checked? 1 : 0;
                 info.annualincome = document.getElementById("ann").value; //number between range
-                // if (info.annualincome < 0 || info.annualincome > 1000000) {
-                //     alert("Please enter income in range 0-1000000");
-                //     return;
-                // }
+                if (info.annualincome < 0 || info.annualincome > 1000000) {
+                    alert("Please enter income in range 0 to 1000000");
+                    return;
+                }
                 info.dependents = document.getElementById("dep").value; //1, 2, 3, 4
-                // if (maritalstatus == null)
+                if (info.dependents < 1 || info.dependents > 4) {
+                    alert("Please enter dependents in range 1 to 4");
+                    return;
+                }
                 animatenone(elem);
                 changeTransparency("three");
                 break;
             case (3):
                 var elem = document.getElementById("three");
                 info.age = document.getElementById("age").value; //min 18, max 99
-                // if (info.age < 18 || info.age > 99) {
-                //     alert("Please enter age in range 18 and 99");
-                //     return;
-                // }
+                if (info.age < 18 || info.age > 99) {
+                    alert("Please enter age in range 18 and 99");
+                    return;
+                }
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
-                // if (!(info.sex == "F" || info.sex == "M")) {
-                //     alert("Please enter M or F for sex");
-                //     return;
-                // }
+                if (!(info.sex == "F" || info.sex == "M")) {
+                    alert("Please enter M or F for sex");
+                    return;
+                }
                 info.height = document.getElementById("height").value; //50max is 80
-                // if (info.height < 50 || info.height > 80) {
-                //     alert("Please enter height in range 50 and 80");
-                //     return;
-                // }
+                if (info.height < 50 || info.height > 80) {
+                    alert("Please enter height in range 50 and 80");
+                    return;
+                }
                 info.weight = document.getElementById("weight").value; //100max is 300
-                // if (info.weight < 100 || info.weight > 300) {
-                //     alert("Please enter weight in range 100 and 300");
-                //     return;
-                // }
+                if (info.weight < 100 || info.weight > 300) {
+                    alert("Please enter weight in range 100 and 300");
+                    return;
+                }
                 info.tobacco = document.getElementById("tob").checked? 1 : 0;
                 animatenone(elem);
                 changeTransparency("four");
