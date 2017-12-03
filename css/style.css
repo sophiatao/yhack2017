@@ -26,23 +26,24 @@ body {
     overflow: hidden;
     background: rgba(76, 77, 132, 0.5);
     position: absolute;
-    top: 25%;
+    top: 20%;
     margin-top: -50px;
     left: 10%;
     /*margin-right: 25%;*/
-    width: 150%;
-    height: 60%;
+    width: 250%;
+    height: 70%;
 }
 
 #title {
     padding-left: 50px;
 }
 
-.text {
+.text-format {
     float: left;
     width: 20em;
     padding-left: 50px;
 }
+
 
 .questions {
 

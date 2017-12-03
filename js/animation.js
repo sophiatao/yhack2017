@@ -21,8 +21,28 @@ var url = "http://159.203.2.233/quote"
 
 function getNextForm(param) {
         switch (param) {
-            case (0):
-                var elem = document.getElementById("zero");
+            // case (0):
+            //     var elem = document.getElementById("zero");
+            //     info.firstName = document.getElementById("fname").value;
+            //     if (!info.firstName) {
+            //         alert("Invalid first name");
+            //         return;
+            //     }
+            //     info.lastName = document.getElementById("lname").value;
+            //     if (!info.lastName) {
+            //         alert("Invalid last name");
+            //         return;
+            //     }
+            //     info.email = document.getElementById("email").value;
+            //     if (!info.email) {
+            //         alert("Invalid email");
+            //         return;
+            //     }
+            //     elem.style.display = 'none';
+            //     changeTransparency("one");
+            //     break;
+            case (1):
+                var elem = document.getElementById("one");
                 info.firstName = document.getElementById("fname").value;
                 if (!info.firstName) {
                     alert("Invalid first name");
@@ -38,10 +58,6 @@ function getNextForm(param) {
                     alert("Invalid email");
                     return;
                 }
-                changeTransparency("one");
-                break;
-            case (1):
-                var elem = document.getElementById("one");
                 info.address = document.getElementById("address").value;
                 if (!info.address) {
                     alert("Invalid address");
