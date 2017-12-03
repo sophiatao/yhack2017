@@ -19,6 +19,11 @@ body {
     overflow: hidden;
 }
 
+.errors {
+    font-size: 1em;
+    color: red;
+}
+
 .container {
 
     padding: 15px;
