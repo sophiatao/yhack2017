@@ -47,7 +47,7 @@ body {
     opacity: 1;
 }
 
-.blocker {
+#blocker {
     background: "#fff";
     height: 100%;
     width: 100%;

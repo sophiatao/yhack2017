@@ -169,6 +169,7 @@ function produceLoading() {
 }
 
 function loadPlans() {
+    $("#blocker").addClass("undisplay");
     var plan;
     var price;
     var key;
