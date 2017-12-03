@@ -18,6 +18,7 @@ var info = {
     total: 500000,
 }
 var url = "http://159.203.2.233/quote"
+var mednum = 1;
 
 
 function getNextForm(param) {
@@ -92,7 +93,7 @@ function getNextForm(param) {
                 var elem = document.getElementById("three");
                 info.age = document.getElementById("age").value; //selecting
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
-                info.height = document.getElementById("height").value; //number between range();
+                info.height = document.getElementById("height").value; //max is 80
                 info.weight = document.getElementById("weight").value; //number between range();
                 info.tobacco = document.getElementById("tob").value? 1 : 0;
                 elem.style.display = 'none';
@@ -138,7 +139,31 @@ function changeTransparencyWithBorder(elem, transparency) {
 }
 
 function addForm() {
+    if (mednum >= 5) {
+        alert("maximum of 5 rows");
+        return;
+    }
+    mednum++;
     var e = document.getElementById("medical-form");
+    var newdiv = document.createElement("input");
+     newdiv.name="q";
+    newdiv.type="text";
+    newdiv.id="med"+mednum;
+    newdiv.placeholder="Enter a condition here";
+    newdiv.style="color:#fff;width:75%;max-width:600px;outline:0";
+    e.insertBefore(newdiv, document.getElementById("addform"));
+    var demo = new autoComplete({
+            selector: '#med'+mednum,
+            minChars: 1,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+                var suggestions = [];
+                for (i=0;i<choices.length;i++)
+                    if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                suggest(suggestions);
+            }
+        });
 }
 
 // Update the current slider value (each time you drag the slider handle)

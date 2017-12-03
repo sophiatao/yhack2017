@@ -13,6 +13,7 @@
   <script src="./threejs/examples/js/libs/dat.gui.min.js"></script>
   <script src="./js/app.js"></script>
   <script src="./js/animation.js"></script>
+  <script src="./js/auto-complete.min.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/style.css"/>
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" href="./css/auto-complete.css">
@@ -51,13 +52,13 @@
     <div class="text-format semitransparent" id="three">
       <form onsubmit="return false;">
       Age:  <input type="number" id="age"><br><br>
-      Sex: <input list="sexes" id="sex" />
+      Sex: <input list="sexes" style="width:3em" id="sex" />
               <datalist id="sexes">
                 <option value="M">
                 <option value="F">
               </datalist><br><br>
-      Height: <input type="number" id="height"><br><br>
-      Weight: <input type="number" id="weight"><br><br>
+      Height (in): <input type="number" id="height"><br><br>
+      Weight (lbs): <input type="number" id="weight"><br><br>
       Do you consume tobacco? <input type="checkbox" id="tob"><br><br>
       </form>
       <button onClick="getNextForm(3)">Next>></button>
@@ -66,13 +67,20 @@
   <div class="questions">
     <div class="text-format semitransparent" id="four">
       <form onsubmit="return false;" id="medical-form">
-        Existing medical conditions:
-<!--       <div class="med" id="medical-form"> -->
-        <form onsubmit="return false;" class="pure-form" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:30px 0;padding:20px 10px;text-align:center">
-          <input id="hero-demo" autofocus type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:100%;max-width:600px;outline:0">
-        </form>
-<!--       </div> -->
-      <button onClick="addForm()" style="width: 50%">+</button><button onClick="removeForm()" style="width: 50%; float: right;">-</button>
+        Existing medical conditions and risk factor:
+
+          <input id="med" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk1" />
+              <datalist id="riskfactor">
+                <option value="Low">
+                <option value="Medium">
+                <option value="High">
+              </datalist><br><br>
+          <!-- <input id="med2" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk2" />
+          <input id="med3" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk3" />
+          <input id="med4" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk4" />
+          <input id="med5" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk5" /> -->
+
+      <button id="addform" onClick="addForm()" style="width: 50%">+</button><button onClick="removeForm()" style="width: 50%; float: right;">-</button>
       </form>
       <button onClick="getNextForm(4)">Next>></button>
     </div>
@@ -94,10 +102,10 @@
 
 <div id="world"></div>
 
-<script src="./js/auto-complete.min.js"></script>
+
     <script>
         var demo1 = new autoComplete({
-            selector: '#hero-demo',
+            selector: '#med',
             minChars: 1,
             source: function(term, suggest){
                 term = term.toLowerCase();
@@ -108,6 +116,54 @@
                 suggest(suggestions);
             }
         });
+        // var demo2 = new autoComplete({
+        //     selector: '#med2',
+        //     minChars: 1,
+        //     source: function(term, suggest){
+        //         term = term.toLowerCase();
+        //         var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+        //         var suggestions = [];
+        //         for (i=0;i<choices.length;i++)
+        //             if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+        //         suggest(suggestions);
+        //     }
+        // });
+        // var demo3 = new autoComplete({
+        //     selector: '#med3',
+        //     minChars: 1,
+        //     source: function(term, suggest){
+        //         term = term.toLowerCase();
+        //         var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+        //         var suggestions = [];
+        //         for (i=0;i<choices.length;i++)
+        //             if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+        //         suggest(suggestions);
+        //     }
+        // });
+        // var demo4 = new autoComplete({
+        //     selector: '#med4',
+        //     minChars: 1,
+        //     source: function(term, suggest){
+        //         term = term.toLowerCase();
+        //         var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+        //         var suggestions = [];
+        //         for (i=0;i<choices.length;i++)
+        //             if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+        //         suggest(suggestions);
+        //     }
+        // });
+        // var demo5 = new autoComplete({
+        //     selector: '#med5',
+        //     minChars: 1,
+        //     source: function(term, suggest){
+        //         term = term.toLowerCase();
+        //         var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+        //         var suggestions = [];
+        //         for (i=0;i<choices.length;i++)
+        //             if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+        //         suggest(suggestions);
+        //     }
+        // });
 
     </script>
 </body>
