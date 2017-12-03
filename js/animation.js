@@ -9,13 +9,13 @@ var info = {
     state: null,
     maritalstatus: null,
     employmentstatus: null,
-    annualincome: null,
-    dependents: null,
-    age: null,
-    sex: null,
-    height: null,
-    weight: null,
-    tobacco: null,
+    annualincome: 50000,
+    dependents: 1,
+    age: 18,
+    sex: "M",
+    height: 50,
+    weight: 100,
+    tobacco: false,
     medical: [],
     total: 500000,
 }
@@ -161,26 +161,37 @@ function submit() {
 function loadPlans() {
     var plan;
     var price;
+    var key;
     switch(response.purchase) {
         case 0:
             plan = "Bronze";
+            key = "bronze";
             price = response.bronze;
             break;
         case 1:
             plan = "Silver";
+            key = "silver";
             price = response.silver;
+            break;
         case 2:
             plan = "Gold";
+            key = "gold";
             price = response.gold;
+            break;
         case 3:
             plan = "Platinum";
+            key = "platinum";
             price = response.platinum;
+            break;
+        default:
+            alert("error");
     }
     $("#preferred").html(function() {
         return plan + "<br>" + price;
     });
     $("#preferred").removeClass("undisplay");
-    for (var i = 0; i < 3; i++) {
+    $("#preferred").addClass(key);
+    for (var i = 0; i < 4; i++) {
         if (i != response.purchase) {
             switch (i) {
                 case 0:

@@ -131,6 +131,17 @@ input[type=number] {
     border-bottom-color: #fff;
 }
 
+input[type=email] {
+    border: none;
+    height: 2em;
+    width: 100%;
+    background: none;
+    color: #fff;
+    font: sans-serif;
+    border-bottom: 2px dotted;
+    border-bottom-color: #fff;
+}
+
 button {
     border: none;
     height: 2em;
