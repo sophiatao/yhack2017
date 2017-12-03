@@ -134,7 +134,7 @@ function getNextForm(param) {
                 break;
             case (5):
                 var elem = document.getElementById("five");
-                info.total = info.total + document.getElementById("additional").value * 1000;
+                info.total = info.total + document.getElementById("additional").value * 10000;
                 animatenone(elem);
                 console.log(info);
                 submit();
@@ -187,39 +187,45 @@ function loadPlans() {
         default:
             alert("error");
     }
-    $("#preferred").html(function() {
-        return plan + "<br>" + price;
-    });
-    $("#preferred").removeClass("undisplay");
-    $("#preferred").addClass(key);
+    // $("#preferred").html(function() {
+    //     return plan + "<br> $" + price;
+    // });
+    // $("#preferred").removeClass("undisplay");
+    // $("#preferred").addClass(key);
     $("#title").children().text("Your preferred plan: "+plan);
     for (var i = 0; i < 4; i++) {
-        if (i != response.purchase) {
+            var  block = "#resultblock"+i;
+            console.log(block);
+
             switch (i) {
                 case 0:
-                    $("#resultblock"+i).html(function() {
-                        return "Bronze <br>" + price;
+                    $(block).html(function() {
+                        return "Bronze <br> $" + response.bronze;
                     });
                     break;
                 case 1:
-                    $("#resultblock"+i).html(function() {
-                        return "Silver <br>" + price;
+                    $(block).html(function() {
+                        return "Silver <br> $" + response.silver;
                     });
                     break;
                 case 2:
-                    $("#resultblock"+i).html(function() {
-                        return "Gold <br>" + price;
+                    $(block).html(function() {
+                        return "Gold <br> $" + response.gold;
                     });
                     break;
                 case 3:
-                    $("#resultblock"+i).html(function() {
-                        return "Platinum <br>" + price;
+                    $(block).html(function() {
+                        return "Platinum <br> $" + response.platinum;
 
                     });
                     break;
             }
-            $("#resultblock"+i).removeClass("undisplay");
-        }
+            $(block).removeClass("undisplay");
+            if (i == response.purchase) {
+                console.log("found match")
+                $(block).css({"border-width": "5px",
+                        "border-color":"#fff",})
+            };
     }
     $("#results").removeClass("undisplay");
 }
