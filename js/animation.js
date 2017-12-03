@@ -86,11 +86,27 @@ function getNextForm(param) {
                 break;
             case (3):
                 var elem = document.getElementById("three");
-                info.age = document.getElementById("age").value; //selecting
+                info.age = document.getElementById("age").value; //min 18, max 99
+                if (info.age < 18 || info.age > 99) {
+                    alert("Please enter age in range 18 and 99");
+                    return;
+                }
                 info.sex = document.getElementById("sex").value; //'M' or 'F' m is 0, F is 1
-                info.height = document.getElementById("height").value; //max is 80
-                info.weight = document.getElementById("weight").value; //max is 300
-                info.tobacco = document.getElementById("tob").value? 1 : 0;
+                // if (!(sex.equals("F") || sex.equals("M")) {
+                //     alert("Please enter M or F for sex");
+                //     return;
+                // }
+                info.height = document.getElementById("height").value; //50max is 80
+                if (info.height < 50 || info.height > 80) {
+                    alert("Please enter height in range 50 and 80");
+                    return;
+                }
+                info.weight = document.getElementById("weight").value; //100max is 300
+                if (info.weight < 100 || info.weight > 300) {
+                    alert("Please enter weight in range 100 and 300");
+                    return;
+                }
+                info.tobacco = document.getElementById("tob").checked? 1 : 0;
                 animatenone(elem);
                 changeTransparency("four");
                 break;
@@ -122,7 +138,7 @@ function submit() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(info);
+    xhr.send(JSON.stringify(info));
     xhr.onload = function() {
         console.log(xhr.status);
         console.log(xhr.responseText);
