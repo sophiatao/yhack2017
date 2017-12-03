@@ -14,6 +14,7 @@
   <script src="./js/app.js"></script>
   <script src="./js/animation.js"></script>
   <script src="./js/auto-complete.min.js"></script>
+  <script src="./js/transition.min.js"></script>
   <link type="text/css" rel="stylesheet" href="./css/style.css"/>
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link rel="stylesheet" href="./css/auto-complete.css">
@@ -69,18 +70,19 @@
       <form onsubmit="return false;" id="medical-form">
         Existing medical conditions and risk factor:
 
-          <input id="med" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk1" />
+          <input id="med0" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk0" />
               <datalist id="riskfactor">
                 <option value="Low">
                 <option value="Medium">
                 <option value="High">
-              </datalist><br><br>
+              </datalist><br>
           <!-- <input id="med2" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk2" />
           <input id="med3" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk3" />
           <input id="med4" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk4" />
           <input id="med5" type="text" name="q" placeholder="Enter a condition here" style="color:#fff;width:75%;max-width:600px;outline:0"><input list="riskfactor" style="width:3em" id="risk5" /> -->
 
       <button id="addform" onClick="addForm()" style="width: 50%">+</button><button onClick="removeForm()" style="width: 50%; float: right;">-</button>
+
       </form>
       <button onClick="getNextForm(4)">Next>></button>
     </div>
@@ -105,7 +107,7 @@
 
     <script>
         var demo1 = new autoComplete({
-            selector: '#med',
+            selector: '#med0',
             minChars: 1,
             source: function(term, suggest){
                 term = term.toLowerCase();

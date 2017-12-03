@@ -14,11 +14,11 @@ var info = {
     height: null,
     weight: null,
     tobacco: null,
-    medical: null,
+    medical: [],
     total: 500000,
 }
 var url = "http://159.203.2.233/quote"
-var mednum = 1;
+var mednum = 0;
 
 
 function getNextForm(param) {
@@ -75,8 +75,7 @@ function getNextForm(param) {
                     alert("Invalid state");
                     return;
                 }
-
-                elem.style.display = 'none';
+                animatenone(elem);
                 changeTransparency("two");
                 break;
             case (2):
@@ -86,7 +85,7 @@ function getNextForm(param) {
                 info.annualincome = document.getElementById("ann").value; //number between range
                 info.dependents = document.getElementById("dep").value; //1, 2, 3, 4
                 // if (maritalstatus == null)
-                elem.style.display = 'none';
+                animatenone(elem);
                 changeTransparency("three");
                 break;
             case (3):
@@ -96,18 +95,23 @@ function getNextForm(param) {
                 info.height = document.getElementById("height").value; //max is 80
                 info.weight = document.getElementById("weight").value; //number between range();
                 info.tobacco = document.getElementById("tob").value? 1 : 0;
-                elem.style.display = 'none';
+                animatenone(elem);
                 changeTransparency("four");
                 break;
             case (4):
                 var elem = document.getElementById("four");
-                elem.style.display = 'none';
+                animatenone(elem);
                 changeTransparency("five");
                 break;
             case (5):
                 var elem = document.getElementById("five");
                 info.total += document.getElementById("additional").value;
-                elem.style.display = 'none';
+                for (var i = 0; i <= mednum; i++) {
+                    var med = document.getElementById("med"+i).value.split(" ")[0];
+                    var risk = document.getElementById("risk"+i).value;
+                    info.medical.push({"ICD_CODE": med, "Risk_factor": risk});
+                }
+                animatenone(elem);
                 console.log(info);
                 submit();
                 break;
@@ -152,6 +156,11 @@ function addForm() {
     newdiv.placeholder="Enter a condition here";
     newdiv.style="color:#fff;width:75%;max-width:600px;outline:0";
     e.insertBefore(newdiv, document.getElementById("addform"));
+    var newdiv2 = document.createElement("input");
+    newdiv2.list="riskfactor";
+    newdiv2.style="width:3em";
+    newdiv2.id="risk"+mednum;
+    e.insertBefore(newdiv2, document.getElementById("addform"));
     var demo = new autoComplete({
             selector: '#med'+mednum,
             minChars: 1,
@@ -171,3 +180,8 @@ function updateSliderValue(value) {
     var output = document.getElementById("slideroutput");
     output.innerHTML = value * 10000;
 }
+
+function animatenone(element) {
+    transition.begin(element, ["opacity", "1", "0", "500ms", "linear"], {onTransitionEnd: function() {element.style.display = 'none';}});
+}
+
