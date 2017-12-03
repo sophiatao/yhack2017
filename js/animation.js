@@ -121,6 +121,7 @@ function getNextForm(param) {
                 var elem = document.getElementById("four");
                 for (var i = 0; i <= mednum; i++) {
                     var med = document.getElementById("med"+i).value.split(" ")[0];
+                    if (!med) continue;
                     var risk = document.getElementById("risk"+i).value;
                     if (risk != "Low" && risk != "Medium" && risk != "High" && med) {
                         alert("Risk must be 'Low', 'Medium', or 'High'.");
